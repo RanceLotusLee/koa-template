@@ -15,7 +15,9 @@ app.use(logger()); //日志
 app.use(bodyParser()); //处理所有body格式，除了form-data
 app.use(cors()); //允许跨域
 app.use(useRoutes); //注册所有路由
-app.use(historyApiFallback()); //处理vue history和接口的冲突
+app.use(historyApiFallback({
+  whiteList: ['/api'], //添加路由白名单
+})); //处理vue history和接口的冲突
 app.use(static(dest)); 
 
 module.exports = app;
